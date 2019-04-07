@@ -1,7 +1,9 @@
 package com.bye.hi.lie;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,11 +13,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView txt1 = (TextView) findViewById(R.id.txt1);
-        TextView txt2 = (TextView) findViewById(R.id.txt2);
-        TextView txt3 = (TextView) findViewById(R.id.txt3);
-        TextView txt4 = (TextView) findViewById(R.id.txt4);
-        TextView txt5 = (TextView) findViewById(R.id.txt5);
+        TextView textView1 = (TextView) findViewById(R.id.textView1);
+        EditText IDtxt = (EditText) findViewById(R.id.IDtxt);
+        TextView textView3 = (TextView) findViewById(R.id.textView3);
+        EditText PWtxt = (EditText) findViewById(R.id.PWtxt);
+        TextView textView5 = (TextView) findViewById(R.id.textView5);
+
+        Intent intent =getIntent();
+        String userID = intent.getStringExtra("userID");
+        String userPW = intent.getStringExtra("userPW");
+
+        IDtxt.setText(userID);
+        PWtxt.setText(userPW);
 
 
     }

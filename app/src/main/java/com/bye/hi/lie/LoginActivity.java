@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -50,7 +51,13 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            if (success) {
+                               /*  if (success) {
+                                Toast.makeText(LoginActivity.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "로그인 실패!", Toast.LENGTH_SHORT).show();
+
+                            } */
+                          if (success) {
                                 String userID = jsonResponse.getString("userID");
                                 String userPW = jsonResponse.getString("userPW");
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -64,7 +71,9 @@ public class LoginActivity extends AppCompatActivity {
                                         .create()
                                         .show();
                             }
-                        } catch (JSONException e) {
+
+                        } catch (Exception e)
+                        {
                             e.printStackTrace();
                         }
                     }
