@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Jobtxt">
+        <item>대학(원)생</item>>
+        <item>고등학생</item>>
+        <item>중학생</item>>
+        <item>초등학생</item>>
+        <item>주부</item>>
+        <item>회사원</item>>
+        <item>백수</item>>
+    </string-array>>
+
+</resources>

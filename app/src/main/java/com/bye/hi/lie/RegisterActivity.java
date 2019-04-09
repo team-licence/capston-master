@@ -5,8 +5,10 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,18 +23,26 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean validate = false;
 
+    private ArrayAdapter adapter;
+    private Spinner spinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        spinner = (Spinner) findViewById(R.id.Jobtxt);
+        adapter = ArrayAdapter.createFromResource(this, R.array.Jobtxt, android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
         final EditText IDtxt = (EditText) findViewById(R.id.IDtxt);
         final EditText PWtxt = (EditText) findViewById(R.id.PWtxt);
         final EditText Nametxt = (EditText) findViewById(R.id.Nametxt);
-        final EditText Jobtxt = (EditText) findViewById(R.id.Jobtxt);
         final EditText CGNumbur = (EditText) findViewById(R.id.CGNumbur);
 
         final Button overlDButton = (Button) findViewById(R.id.overlDButton);
+
+
         overlDButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                     String userID = IDtxt.getText().toString();
                     String userPW = PWtxt.getText().toString();
                     String userName = Nametxt.getText().toString();
-                    String userJob = Jobtxt.getText().toString();
+                    String userJob = spinner.getSelectedItem().toString();
                     int cgNum = Integer.parseInt(CGNumbur.getText().toString());
 
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
