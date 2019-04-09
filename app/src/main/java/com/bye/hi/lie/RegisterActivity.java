@@ -15,7 +15,11 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static java.lang.Boolean.getBoolean;
+
 public class RegisterActivity extends AppCompatActivity {
+
+    private boolean validate = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,54 +32,100 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText Jobtxt = (EditText) findViewById(R.id.Jobtxt);
         final EditText CGNumbur = (EditText) findViewById(R.id.CGNumbur);
 
-        Button registerMemberButton = (Button) findViewById(R.id.registerMemberButton);
-
-        registerMemberButton.setOnClickListener(new View.OnClickListener() {
+        final Button overlDButton = (Button) findViewById(R.id.overlDButton);
+        overlDButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userID = IDtxt.getText().toString();
-                String userPW = PWtxt.getText().toString();
-                String userName = Nametxt.getText().toString();
-                String userJob = Jobtxt.getText().toString();
-                int cgNum = Integer.parseInt(CGNumbur.getText().toString());
-
+                if (validate) {
+                    return;
+                }
+                if (userID.equals("")) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    builder.setMessage("아이디는 빈 칸일 수 없습니다.")
+                            .setPositiveButton("확인", null)
+                            .create()
+                            .show();
+                    return;
+                }
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try
-                        {
+                        try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            if(success){
+                            if (success) {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("회원등록완료")
+                                builder.setMessage("사용할 수 있는 아이디입니다.")
                                         .setPositiveButton("확인", null)
                                         .create()
                                         .show();
-                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                 RegisterActivity.this.startActivity(intent);
-                            }
-                            else
-                                {
+                                IDtxt.setEnabled(false);
+                                validate = true;
+                            } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("회원등록실패")
-                                        .setNegativeButton("다시시도", null)
+                                builder.setMessage("사용할 수 없는 아이디입니다.")
+                                        .setPositiveButton("확인", null)
                                         .create()
                                         .show();
                             }
-
-                        }
-                        catch (JSONException e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
-
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPW, userName, userJob, cgNum, responseListener);
+                ChkidRequest ChkidRequest = new ChkidRequest(userID, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                queue.add(ChkidRequest);
             }
         });
+        {
+
+            Button registerMemberButton = (Button) findViewById(R.id.registerMemberButton);
+
+
+            registerMemberButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String userID = IDtxt.getText().toString();
+                    String userPW = PWtxt.getText().toString();
+                    String userName = Nametxt.getText().toString();
+                    String userJob = Jobtxt.getText().toString();
+                    int cgNum = Integer.parseInt(CGNumbur.getText().toString());
+
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);
+                                boolean success = jsonResponse.getBoolean("success");
+                                if (success) {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                    builder.setMessage("회원등록완료")
+                                            .setPositiveButton("확인", null)
+                                            .create()
+                                            .show();
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    RegisterActivity.this.startActivity(intent);
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                    builder.setMessage("회원등록실패")
+                                            .setNegativeButton("다시시도", null)
+                                            .create()
+                                            .show();
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    };
+                    RegisterRequest registerRequest = new RegisterRequest(userID, userPW, userName, userJob, cgNum, responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
+                    queue.add(registerRequest);
+                }
+            });
+        }
     }
 }

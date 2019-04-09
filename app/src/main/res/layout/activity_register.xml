@@ -22,74 +22,83 @@
             android:id="@+id/IDtxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
+            android:layout_marginRight="10dp"
+            android:hint="아이디를 입력해주세요."
             android:imeOptions="actionNext"
-            android:hint="아이디를 입력해주세요."/>
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/overlDButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:text="ID 중복 검사" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Password"/>
+            android:layout_marginTop="20dp"
+            android:text="User Password" />
 
         <EditText
             android:id="@+id/PWtxt"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:imeOptions="actionGo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="6자리 이상 입력해주세요."/>
+            android:hint="6자리 이상 입력해주세요."
+            android:imeOptions="actionGo"
+            android:inputType="textPassword"
+            android:singleLine="true" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Name"/>
+            android:layout_marginTop="20dp"
+            android:text="User Name" />
 
         <EditText
             android:id="@+id/Nametxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
             android:hint="이름"
-            android:inputType="textPersonName" />
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User Job"/>
+            android:layout_marginTop="20dp"
+            android:text="User Job" />
 
         <EditText
             android:id="@+id/Jobtxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
             android:hint="직업"
-            android:inputType="textPersonName" />
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="과목번호"/>
+            android:layout_marginTop="20dp"
+            android:text="과목번호" />
 
         <EditText
             android:id="@+id/CGNumbur"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
             android:hint="컴퓨터 1번, 화학 2번, 건축 3번, 전기 4번"
-            android:inputType="textPersonName" />
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            android:singleLine="true" />
 
         <Button
             android:id="@+id/registerMemberButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#1CB0D3"
             android:text="회원가입" />
 
     </LinearLayout>
