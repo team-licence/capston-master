@@ -10,4 +10,54 @@
         <item>백수</item>>
     </string-array>>
 
+    <string-array name = "CgName">
+        <item>분야 선택</item>
+        <item>컴퓨터</item>
+        <item>사이버</item>
+        <item>소방</item>
+        <item>전기</item>
+    </string-array>
+
+    <string-array name = "cert_computer">
+        <item>자격증 선택</item>
+        <item>정보처리산업기사 필기</item>
+        <item>정보처리산업기사 실기</item>
+        <item>정보처리기사 필기</item>
+        <item>정보처리기사 실기</item>
+    </string-array>
+
+    <string-array name = "cert_compsecu">
+        <item>자격증 선택</item>
+        <item>정보처리산업기사 필기</item>
+        <item>정보처리산업기사 실기</item>
+        <item>정보처리기사 필기</item>
+        <item>정보처리기사 실기</item>
+        <item>정보보안기사 필기</item>
+        <item>정보보안기사 실기</item>
+    </string-array>
+
+    <string-array name = "cert_electric">
+        <item>자격증 선택</item>
+        <item>전기기사 필기</item>
+        <item>전기기사 실기</item>
+        <item>전기공사기사 필기</item>
+        <item>전기공사기사 실기</item>
+    </string-array>
+
+    <string-array name = "cert_firefight">
+        <item>자격증 선택</item>
+        <item>소방설비기사</item>
+        <item>소방설비산업기사</item>
+        <item>소방시설관리사 필기</item>
+    </string-array>
+
+    <string-array name = "numturn">
+        <item>회차 선택</item>
+        <item>2019년 1회</item>
+        <item>2018년 3회</item>
+        <item>2018년 2회</item>
+        <item>2018년 1회</item>
+        <item>2017년 3회</item>
+    </string-array>
+
 </resources>

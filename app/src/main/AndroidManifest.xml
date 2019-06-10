@@ -3,14 +3,19 @@
     package="com.bye.hi.lie">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".Studylist"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".Choice_Numturn" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +24,26 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".Mypage"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".Subject" />
+        <activity android:name=".NumTurn" />
+        <activity android:name=".Practice_menu" />
+        <activity android:name=".TestData.StudyView1" />
+        <activity android:name=".TestData.TestView1" />
+        <activity android:name=".TestData.TestView2" />
+        <activity android:name=".TestData.TestView3" />
+        <activity android:name=".TestData.TestView4" />
+        <activity android:name=".TestData.TestView5" />
+        <activity android:name=".TestData.TestView001" />
+        <activity android:name=".TestData.TestView002" />
+        <activity android:name=".TestData.TestView003" />
+        <activity
+            android:name=".Learn"
+            android:theme="@android:style/Theme.Dialog"></activity>
+        <activity android:name=".TestData.Studydown1"></activity>
     </application>
 
 </manifest>

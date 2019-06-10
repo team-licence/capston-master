@@ -11,8 +11,8 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher"
+        android:layout_height="143dp"
+        android:background="@drawable/login_main"
         android:scaleType="centerCrop" />
 
     <LinearLayout
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username" />
+            android:text="ID" />
 
         <EditText
             android:id="@+id/IDtxt"
@@ -49,13 +49,16 @@
             android:ems="10"
             android:hint="비밀번호를 입력하세요"
             android:imeOptions="actionNext"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:maxLength="100"
+            android:inputType="textPassword"
+            />
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log In" />
+            android:layout_height="53dp"
+            android:text="Hello" />
 
     </LinearLayout>
 

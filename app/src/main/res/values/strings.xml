@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">lie</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="wrong_fragment">이곳은 오답노트 Fragment 입니다</string>
+    <string name="Problem_fragment">이곳은 학습 Fragment 입니다</string>
+    <string name="hi"></string>
+    <color name="bg">#6382B9</color>
+
+
 </resources>

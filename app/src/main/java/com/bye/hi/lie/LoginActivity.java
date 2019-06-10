@@ -8,13 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.bye.hi.lie.Request.LoginRequest;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
@@ -51,13 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                               /*  if (success) {
-                                Toast.makeText(LoginActivity.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(LoginActivity.this, "로그인 실패!", Toast.LENGTH_SHORT).show();
 
-                            } */
-                          if (success) {
+                         if (success) {
                                 String userID = jsonResponse.getString("userID");
                                 String userPW = jsonResponse.getString("userPW");
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -65,20 +59,19 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("userPW", userPW);
                                 LoginActivity.this.startActivity(intent);
                             } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                              AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage("로그인 실패")
                                         .setNegativeButton("다시시도", null)
                                         .create()
                                         .show();
                             }
-
-                        } catch (Exception e)
+                        }
+                        catch (Exception e)
                         {
                             e.printStackTrace();
                         }
                     }
                 };
-
 
                 LoginRequest loginRequest = new LoginRequest(userID, userPW, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
